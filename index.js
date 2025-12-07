@@ -36,7 +36,9 @@ mongoose.connection.on("connected", (err, res) => {
 const server = createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: 'http://localhost:5173', 
+    origin: ['http://localhost:5173',
+      'https://friends-chat-production.up.railway.app'
+    ], 
     methods: ['GET', 'POST'],
     credentials:true
   }
@@ -47,7 +49,7 @@ socketConnection(io)
   cors({
     origin: [
       "http://localhost:5173",          // for local development
-      "https://swapy-three.vercel.app", // for deployed frontend
+      "https://friends-chat-production.up.railway.app", // for deployed frontend
     ],
     credentials: true, // allow cookies, authorization headers
   })
